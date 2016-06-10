@@ -1,54 +1,38 @@
 <!doctype html>
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
 
-<html lang="{$ lang $}">
-{% include "head.html" %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
-<!-- Don't use <body unresolved>. It's a simple FOUC solution, but hides
-     the page until imports and Polymer are loaded. Intead, control FOUC manually with
-     a skeleton. -->
-<body>
-  <span id="browser-sync-binding"></span>
+  <title>Polymer Redux Counter Demo</title>
 
-  <!-- Light weight skeleton is outside of Polymer/imports and styled by
-       the main page. 1st paint is fast, even on polyfilled browsers. Alternatively,
-       one could create an "app shell" and style the page's un-upgraded elements
-       similar to their final upgraded version. -->
-  {% include "skeleton.html" %}
+  <link rel="shortcut icon" sizes="32x32" href="/images/app-icon-32.png">
 
-  <!-- Elements wait on the page and are upgraded when elements/base-bundle.html loads. -->
-  <my-app id="app"></my-app>
+  <meta name="theme-color" content="#fff">
+  <link rel="manifest" href="manifest.json">
 
-  <!-- Service Worker support -->
-  <platinum-sw-register auto-register
-                        clients-claim
-                        skip-waiting
-                        base-uri="bower_components/platinum-sw/bootstrap">
-    <!-- Google Analytics offline support
-    <platinum-sw-offline-analytics></platinum-sw-offline-analytics>
-    -->
-    <platinum-sw-cache default-cache-strategy="fastest"
-                       cache-config-file="cache-config.json">
-    </platinum-sw-cache>
-  </platinum-sw-register>
+  <script src="polyfill.min.js"></script>
+  <script src="polymer-settings.js"></script>
 
-  <!-- build:js scripts/app.min.js async -->
-  <script src="bower_components/page/page.js"></script>
-  <script src="scripts/app.js"></script>
-  <script src="scripts/routing.js"></script>
-  <!-- endbuild-->
+  <link rel="import" href="elements/my-demo-app.html">
 
-  <!-- Google Analytics tracker
-  <start-google-analytics-tracker code="{$ config.googleAnalyticsTrackingId $}"></start-google-analytics-tracker>
-  -->
+  <style>
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', 'Noto', sans-serif;
+      line-height: 1.5;
+      min-height: 100vh;
+      background-color: #eee;
+    }
+
+  </style>
+
+</head>
+<body unresolved>
+<span id="browser-sync-binding"></span>
+  <my-demo-app></my-demo-app>
+
 </body>
-
 </html>

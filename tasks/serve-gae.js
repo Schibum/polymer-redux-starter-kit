@@ -4,5 +4,5 @@
 module.exports = function ($, gulp) { return function () {
   return gulp.src('app.yaml')
     .pipe(gulp.dest('dist'))
-    .pipe($.shell('gcloud preview app run dist/app.yaml'));
+    .pipe($.shell('dev_appserver.py dist/app.yaml'));
 };};

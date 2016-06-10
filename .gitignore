@@ -9,3 +9,4 @@ npm-debug.log*
 TODO.md
 .tmp
 .publish/
+.idea

@@ -1,0 +1,75 @@
+<!doctype html>
+
+<html>
+<head>
+  <script src="../polyfill.min.js"></script>
+  <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../bower_components/web-component-tester/browser.js"></script>
+  <link rel="import" href="../bower_components/imd/imd.html">
+  <!-- Import the element to test -->
+  <link rel="import" href="../elements/my-view1.html">
+  <script src="../bower_components/iron-test-helpers/mock-interactions.js"></script>
+
+</head>
+<body>
+
+<test-fixture id="view1">
+  <template>
+    <my-view1></my-view1>
+  </template>
+</test-fixture>
+
+<script>
+
+describe('view1 component', () => {
+  var view, buttons;
+  beforeEach(function() {
+    view = fixture('view1');
+    buttons = Polymer.dom(view.root).querySelectorAll('paper-button');
+    sinon.spy(view, 'dispatch');
+  });
+
+  it('should display count', () => {
+    expect(Polymer.dom(view.root).innerHTML).to.match(/Clicked: 0 times/);
+  });
+
+  it('first button should dispatch INCREMENT', () => {
+    MockInteractions.tap(buttons[0]);
+    expect(view.dispatch).to.have.been.calledWithMatch({type: 'INCREMENT'});
+  });
+
+  it('second button should dispatch DECREMENT', () => {
+    MockInteractions.tap(buttons[1]);
+    expect(view.dispatch).to.have.been.calledWithMatch({type: 'DECREMENT'});
+  });
+
+  it('third button should not INCREMENT if the counter is even', () => {
+    view.value = 42;
+    MockInteractions.tap(buttons[2]);
+    expect(view.dispatch).not.to.have.been.called;
+  });
+
+  it('third button should INCREMENT the counter is odd', () => {
+    view.value = 43;
+    MockInteractions.tap(buttons[2]);
+    expect(view.dispatch).to.have.been.calledWithMatch({type: 'INCREMENT'});
+  });
+
+  it.only('third button should INCREMENT if the counter is odd and negative', () => {
+    view.value = -43;
+    MockInteractions.tap(buttons[2]);
+    expect(view.dispatch).to.have.been.calledWithMatch({type: 'INCREMENT'});
+  });
+
+  it('fourth button should INCREMENT in a second', (done) => {
+    MockInteractions.tap(buttons[3]);
+    setTimeout(() => {
+      expect(view.dispatch).to.have.been.calledWithMatch({type: 'INCREMENT'});
+      done();
+    }, 1000);
+  });
+});
+
+</script>
+</body>
+</html>

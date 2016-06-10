@@ -1,0 +1,53 @@
+{
+  "parser": "babel-eslint",
+    "rules": {
+      "semi": [2, "always"],
+      "quotes": [
+        2,
+      "single"
+      ],
+      "no-underscore-dangle": 0,
+      "strict": [
+        2,
+      "global"
+      ],
+      "global-strict": [
+        0,
+      "always"
+      ],
+      "curly": 0,
+      "new-cap": 0,
+      "eqeqeq": 0,
+      "no-console": 0,
+      "no-shadow": 0,
+      "no-use-before-define": 0
+    },
+    "env": {
+      "browser": true
+    },
+    "plugins": [
+      "html"
+    ],
+    "globals": {
+      "it": false,
+      "xit": false,
+      "inject": false,
+      "describe": false,
+      "xdescribe": false,
+      "beforeEach": false,
+      "afterEach": false,
+      "runs": false,
+      "browser": false,
+      "exports": false,
+      "by": false,
+      "window": false,
+      "HTMLElement": false,
+      "Path2D": false,
+      "console": false,
+      "jasmine": false,
+      "document": false,
+      "expect": false,
+      "chrome": false
+    }
+}
+

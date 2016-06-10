@@ -1,0 +1,79 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="modules.html">
+
+<dom-module id="my-view1">
+
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+    <style>
+      :host {
+        display: block;
+        padding: 10px;
+      }
+
+      #buttons {
+        max-width: 200px;
+      }
+
+    </style>
+
+    Clicked: {{value}} times
+    <div class="layout vertical" id="buttons">
+      <paper-button on-tap="onIncrement">+</paper-button>
+      <paper-button on-tap="onDecrement">-</paper-button>
+      <paper-button on-tap="incrementIfOdd">
+        Increment if odd
+      </paper-button>
+      <paper-button on-tap="incrementAsync">
+        Increment async
+      </paper-button>
+      <paper-button on-tap="onIncrementTwo">+2</paper-button>
+    </div>
+  </template>
+
+  <script>
+    import {
+      ReduxBehavior,
+      actions
+    } from '../components/my-demo/app-store.js';
+
+    Polymer({
+      is: 'my-view1',
+      properties: {
+        value: {
+          type: Number,
+          statePath: 'value'
+        }
+      },
+      behaviors: [ReduxBehavior],
+
+      incrementIfOdd() {
+        if (this.value % 2 !== 0) {
+          this.onIncrement();
+        }
+      },
+
+      incrementAsync() {
+        setTimeout(this.onIncrement.bind(this), 1000);
+      },
+
+      onIncrement() {
+        this.dispatch(actions.increment());
+      },
+
+      onDecrement() {
+        this.dispatch(actions.decrement());
+      },
+
+      onIncrementTwo() {
+        this.dispatch(actions.increment(2));
+      }
+
+
+    });
+  </script>
+
+</dom-module>

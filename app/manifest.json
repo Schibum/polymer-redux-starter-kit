@@ -1,41 +1,29 @@
 {
-  "name": "{$ appName $}",
-  "short_name": "{$ appShortName $}",
-  "icons": [{
-        "src": "images/touch/icon-72x72.png",
-        "sizes": "72x72",
-        "type": "image/png"
-      }, {
-        "src": "images/touch/icon-96x96.png",
-        "sizes": "96x96",
-        "type": "image/png"
-      }, {
-        "src": "images/touch/icon-128x128.png",
-        "sizes": "128x128",
-        "type": "image/png"
-      }, {
-        "src": "images/touch/ms-touch-icon-144x144-precomposed.png",
-        "sizes": "144x144",
-        "type": "image/png"
-      }, {
-        "src": "images/touch/apple-touch-icon.png",
-        "sizes": "152x152",
-        "type": "image/png"
-      }, {
-        "src": "images/touch/chrome-touch-icon-192x192.png",
-        "sizes": "192x192",
-        "type": "image/png"
-      },{
-        "src": "images/touch/chrome-splashscreen-icon-384x384.png",
-        "sizes": "384x384",
-        "type": "image/png"
-      },{
-        "src": "images/touch/icon-512x512.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      }],
-  "start_url": "./?utm_source=web_app_manifest",
+  "name": "Polymer Redux Couner Demo",
+  "short_name": "Polumer Redux Demo",
+    "icons": [{
+      "src": "images/app-icon-32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    }, {
+      "src": "images/app-icon.svg",
+      "sizes": "128x128",
+      "type": "image/svg"
+    }, {
+      "src": "images/app-icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }, {
+      "src": "images/app-icon.svg",
+      "sizes": "192x192",
+      "type": "image/svg"
+    },{
+      "src": "images/app-icon.svg",
+      "sizes": "384x384",
+      "type": "image/svg"
+    }],
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "{$ theme.manifest.themeColor $}",
-  "background_color": "{$ theme.manifest.backgroundColor $}"
+  "background_color": "#3f51b5",
+  "theme_color": "#3f51b5"
 }

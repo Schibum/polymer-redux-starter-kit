@@ -1,0 +1,35 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="./wb-simple-dialog.html">
+
+<dom-module id="my-view2">
+
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding: 10px;
+      }
+
+
+    </style>
+    <wb-simple-dialog id="simpleDialog"></wb-simple-dialog>
+    <paper-button on-tap="open">Open dialog</paper-button>
+    Your Choice: {{choice}}
+  </template>
+
+  <script>
+    Polymer({
+      is: 'my-view2',
+      async open() {
+        // we can use ES6 here
+        if (await this.$.simpleDialog.confirm('Please Confirm', 'Are you sure?')) {
+          this.choice = 'confirmed';
+        } else {
+          this.choice = 'cancelled';
+        }
+      }
+    });
+  </script>
+
+</dom-module>

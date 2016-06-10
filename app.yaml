@@ -6,6 +6,7 @@
 runtime: python27
 api_version: 1
 threadsafe: yes
+module: admin-ui
 
 default_expiration: "365d" # 1 year, expiration on GAE is max 1 year
 
@@ -107,15 +108,10 @@ handlers:
   secure: always
   mime_type: text/html; charset=UTF-8
   http_headers:
-    Link: '</themes/default-theme/fonts/Roboto-normal-500.woff>; rel=preload; as=font,
-           </elements/base-bundle.html>; rel=preload; as=document,
-           </cache-config.json>; rel=preload; as=json,
-           </elements/base-bundle.js>; rel=preload; as=script,
-           </scripts/app.min.js>; rel=preload; as=script,
-           </bower_components/platinum-sw/service-worker.js>; rel=preload; as=script,
-           </sw-import.js>; rel=preload; as=script'
+    Link: '</elements/my-demo-app.html>; rel=preload; as=document'
     X-UA-Compatible: "IE=edge"
     #Content-Security-Policy: "script-src 'self'; object-src 'self'"
+  login: admin
 
 skip_files:
 - ^(.*/)?app\.yaml
